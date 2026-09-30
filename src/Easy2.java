@@ -86,6 +86,7 @@ public class Easy2 implements ActionListener {
         Button3.setActionCommand("Button3");
         Button4.setActionCommand("Button4");
         Button5.setActionCommand("Button5");
+//
 
         Button1.addActionListener(new ButtonClickListener());
         Button2.addActionListener(new ButtonClickListener());
