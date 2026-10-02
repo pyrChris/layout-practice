@@ -19,8 +19,8 @@ public class Easy2 implements ActionListener {
     }
 
     public static void main(String[] args) {
-        Easy2 Easy = new Easy2();
-        Easy.showEventDemo();
+        Easy2 Easy2 = new Easy2();
+        Easy2.showEventDemo();
     }
 
     private void prepareGUI() {
@@ -74,7 +74,6 @@ public class Easy2 implements ActionListener {
     }
 
     private void showEventDemo() {
-
         JButton Button1 = new JButton("Button1");
         JButton Button2 = new JButton("Button2");
         JButton Button3 = new JButton("Button3");
@@ -86,7 +85,6 @@ public class Easy2 implements ActionListener {
         Button3.setActionCommand("Button3");
         Button4.setActionCommand("Button4");
         Button5.setActionCommand("Button5");
-//
 
         Button1.addActionListener(new ButtonClickListener());
         Button2.addActionListener(new ButtonClickListener());
@@ -94,11 +92,11 @@ public class Easy2 implements ActionListener {
         Button4.addActionListener(new ButtonClickListener());
         Button5.addActionListener(new ButtonClickListener());
 
-        controlPanel.add(Button1,JButton.NORTH);
-        controlPanel.add(Button2,JButton.EAST);
-        controlPanel.add(Button3,JButton.SOUTH);
-        controlPanel.add(Button4,JButton.WEST);
-        controlPanel.add(Button5,JButton.CENTER);
+        controlPanel.add(Button1,BorderLayout.NORTH);
+        controlPanel.add(Button2,BorderLayout.EAST);
+        controlPanel.add(Button3,BorderLayout.SOUTH);
+        controlPanel.add(Button4,BorderLayout.WEST);
+        controlPanel.add(Button5,BorderLayout.CENTER);
 
         mainFrame.setVisible(true);
     }
