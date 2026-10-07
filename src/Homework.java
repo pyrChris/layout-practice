@@ -52,6 +52,7 @@ public class Homework implements ActionListener {
         display = new JTextArea();
         display.setEditable(false);
         display.setLineWrap(true);
+        display.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 18));
         scrollPane = new JScrollPane(display);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         mainFrame.add(scrollPane,BorderLayout.CENTER);
@@ -63,16 +64,20 @@ public class Homework implements ActionListener {
     void showEventDemo() {
         JButton submitButton = new JButton("Submit");
         JButton addSubmitButton = new JButton("Add + Submit");
+        JButton fontButton = new JButton("Cycle Fonts");
         JButton cancelButton = new JButton("Reset");
         submitButton.setActionCommand("Submit");
         addSubmitButton.setActionCommand("Add + Submit");
+        fontButton.setActionCommand("Cycle Fonts");
         cancelButton.setActionCommand("Reset");
         addSubmitButton.addActionListener(new ButtonClickListener());
         submitButton.addActionListener(new ButtonClickListener());
+        fontButton.addActionListener(new ButtonClickListener());
         cancelButton.addActionListener(new ButtonClickListener());
 
         controlPanel.add(addSubmitButton);
         controlPanel.add(submitButton);
+        controlPanel.add(fontButton);
         controlPanel.add(cancelButton);
 
 
@@ -89,6 +94,7 @@ public class Homework implements ActionListener {
     }
 
     private class ButtonClickListener implements ActionListener {
+        private int fontState = 0;
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if(command.equals("Submit")){
@@ -98,6 +104,36 @@ public class Homework implements ActionListener {
                 inputField.setText("");
             }else if(command.equals("Add + Submit")){
                 display.setText(display.getText()+inputField.getText());
+            }
+            else if(command.equals("Cycle Fonts")){
+                //setFont parameters: https://stackoverflow.com/questions/59763059/change-the-font-style-size-in-a-java-swing-appliation
+                //https://www.scribd.com/document/947547133/GUI-4-Colors-Fonts
+                switch(fontState){
+                    case 0:
+                        display.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 18));
+                        fontState++;
+                        break;
+                    case 1:
+                        display.setFont(new Font("Arial", Font.BOLD, 18));
+                        fontState++;
+                        break;
+                    case 2:
+                        display.setFont(new Font("Arial", Font.ITALIC, 18));
+                        fontState++;
+                        break;
+                    case 3:
+                        display.setFont(new Font("Helvetica", Font.LAYOUT_LEFT_TO_RIGHT, 18));
+                        fontState++;
+                        break;
+                    case 4:
+                        display.setFont(new Font("Times", Font.LAYOUT_LEFT_TO_RIGHT, 18));
+                        fontState++;
+                        break;
+                    case 5:
+                        display.setFont(new Font("Courier", Font.LAYOUT_LEFT_TO_RIGHT, 18));
+                        fontState = 0;
+                        break;
+                }
             }
         }
     }
