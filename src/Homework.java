@@ -50,9 +50,12 @@ public class Homework implements ActionListener {
 
 
         display = new JTextArea();
+        //https://diarycoding.com/artikel/how-do-i-create-an-uneditable-jtextarea
         display.setEditable(false);
+        //https://stackoverflow.com/questions/74251435/break-string-in-javax-swing-jtextarea-without-escape-characters
         display.setLineWrap(true);
         display.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 18));
+        //https://www.cs.emory.edu/~cheung/Courses/377/Syllabus/8-JDBC/GUI/components5.html
         scrollPane = new JScrollPane(display);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         mainFrame.add(scrollPane,BorderLayout.CENTER);
