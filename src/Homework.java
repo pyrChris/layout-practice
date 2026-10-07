@@ -62,12 +62,16 @@ public class Homework implements ActionListener {
     JTextField inputField = new JTextField();
     void showEventDemo() {
         JButton submitButton = new JButton("Submit");
+        JButton addSubmitButton = new JButton("Add + Submit");
         JButton cancelButton = new JButton("Reset");
         submitButton.setActionCommand("Submit");
+        addSubmitButton.setActionCommand("Add + Submit");
         cancelButton.setActionCommand("Reset");
+        addSubmitButton.addActionListener(new ButtonClickListener());
         submitButton.addActionListener(new ButtonClickListener());
         cancelButton.addActionListener(new ButtonClickListener());
 
+        controlPanel.add(addSubmitButton);
         controlPanel.add(submitButton);
         controlPanel.add(cancelButton);
 
@@ -88,10 +92,12 @@ public class Homework implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if(command.equals("Submit")){
-                display.setText(display.getText() + inputField.getText());
+                display.setText(inputField.getText());
             }else if(command.equals("Reset")){
                 display.setText("");
                 inputField.setText("");
+            }else if(command.equals("Add + Submit")){
+                display.setText(display.getText()+inputField.getText());
             }
         }
     }
